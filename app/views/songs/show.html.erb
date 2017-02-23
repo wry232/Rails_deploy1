@@ -1,0 +1,14 @@
+<a href="/songs">Dashboard</a>
+<h3>Others who added <%=@song.artist%> - <%=@song.title%></h3>
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Times Added</th>
+	</thead>
+	<% @song.playlists.each do |pl| %>
+		<tr>
+			<td><a href="/users/<%=pl.user.id%>"><%=pl.user.first_name%> <%=pl.user.last_name%></a></td>
+			<td><%=pl.times%></td>
+		</tr>
+	<%end%>
+</table>

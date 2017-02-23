@@ -1,0 +1,17 @@
+<h2>Welcome!</h2>
+<form action="/sessions" method="post">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+	<input id="fname" type="text" name="user[first_name]" placeholder="enter first name">
+	<input id="lname" type="text" name="user[last_name]" placeholder="enter last name">
+	<input id="email" type="email" name="user[email]" placeholder="enter email">
+	<input id="password" type="password" name="user[password]" placeholder="password">
+	<input id="password_confirmation" type="password" name="user[password_confirmation]" placeholder="confirm password">
+	<input type="submit" value="Register">
+</form>
+
+<form action="/sessions/login" method="post">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+	<input id="email" type="email" name="user[email]" placeholder="login with email">
+	<input id="password" type="password" name="user[password]" placeholder="your password">
+	<input type="submit" value="log in">
+</form>

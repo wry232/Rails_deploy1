@@ -1,0 +1,33 @@
+<h1>Hello, <%=@current_user.first_name%> <%=@current_user.last_name%>!</h1>
+<p>All songs in our hub:</p>
+<table>
+	<thead>
+		<th>Artist</th>
+		<th>Title</th>
+		<th>No. of Times Song Has Been Added</th>
+		<th>Add to Playlist</th>
+	</thead>
+	<% @songs.each do |song| %>
+		<tr>
+			<td><%=song.artist%></td>
+			<td><a href="/songs/<%=song.id%>"><%=song.title%></a></td>
+			<td>
+				<%= song.playlists.inject(0){|sum,pl|sum + pl.times} %>
+			</td>
+			<td><a href="/songs/add/<%=song.id%>">Add</a></td>
+		</tr>
+	<% end %>
+</table>
+<hr>
+<% if flash[:errors] %>
+	<% flash[:errors].each do |e| %>
+		<p><%= e %></p>
+	<% end %>
+<% end %>
+<p>Add a song</p>
+<form action="/songs" method="post">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+	<input type="text" name="song[title]" placeholder="enter title"><br>
+	<input type="text" name="song[artist]" placeholder="enter artist"><br>
+	<input type="submit" value="Add Song">
+</form>

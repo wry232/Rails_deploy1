@@ -1,0 +1,16 @@
+<h1><%=@user.first_name%> <%=@user.last_name%>'s playlist</h1>
+<a href="/songs">Dashboard</a>
+<table>
+	<thead>
+		<th>Artist</th>
+		<th>Title</th>
+		<th>Times Added</th>
+	</thead>
+    <% @user.playlists.each do |pl| %>
+		<tr>
+			<td><%=pl.song.artist%></td>
+			<td><%=pl.song.title%></td>
+			<td><%=pl.times%></td>
+		</tr>
+	<% end %>
+</table>
