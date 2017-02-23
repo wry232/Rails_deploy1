@@ -81,5 +81,6 @@ test:
 production:
   <<: *default
   database: playlists_production
-  username: playlists
+  # username: ubu
+  username: utuntu
   password: <%= ENV['PLAYLISTS_DATABASE_PASSWORD'] %>
